@@ -1,0 +1,86 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>xo — a little game</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Nunito:wght@600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+  <main class="page">
+    <header class="top">
+      <div class="brand-mark" aria-hidden="true"><span>X</span><span>O</span></div>
+      <p class="eyebrow">A LITTLE GAME FOR TWO</p>
+      <h1>tic tac toe<span>.</span></h1>
+      <p class="subtitle">A tiny game, a little friendly competition.</p>
+    </header>
+
+    <section class="game-card">
+      <div class="players">
+        <label class="player player-x">
+          <span class="player-symbol">×</span>
+          <input id="nameX" maxlength="16" value="Player 1" aria-label="Player X name">
+          <small>PLAYER X</small>
+        </label>
+        <div class="versus">VS</div>
+        <label class="player player-o">
+          <span class="player-symbol">○</span>
+          <input id="nameO" maxlength="16" value="Player 2" aria-label="Player O name">
+          <small>PLAYER O</small>
+        </label>
+      </div>
+
+      <p id="status" class="status" aria-live="polite">Player 1's turn</p>
+
+      <div class="board-wrap">
+        <div class="board" id="board" role="group" aria-label="Tic tac toe board">
+          <button class="cell" aria-label="Cell 1"></button>
+          <button class="cell" aria-label="Cell 2"></button>
+          <button class="cell" aria-label="Cell 3"></button>
+          <button class="cell" aria-label="Cell 4"></button>
+          <button class="cell" aria-label="Cell 5"></button>
+          <button class="cell" aria-label="Cell 6"></button>
+          <button class="cell" aria-label="Cell 7"></button>
+          <button class="cell" aria-label="Cell 8"></button>
+          <button class="cell" aria-label="Cell 9"></button>
+          <svg class="win-line" id="winLine" viewBox="0 0 300 300" aria-hidden="true">
+            <line id="winningStroke" x1="50" y1="50" x2="250" y2="250"></line>
+          </svg>
+        </div>
+      </div>
+
+      <div class="scoreboard">
+        <div><span id="scoreNameX">Player 1</span><strong id="scoreX">0</strong></div>
+        <div><span>DRAWS</span><strong id="draws">0</strong></div>
+        <div><span id="scoreNameO">Player 2</span><strong id="scoreO">0</strong></div>
+      </div>
+
+      <div class="actions">
+        <button class="button button-primary" id="newGame">New round</button>
+        <button class="button button-soft" id="reset">Reset scores</button>
+      </div>
+    </section>
+
+    <section class="online-card">
+      <div class="online-heading">
+        <span class="online-dot"></span>
+        <div>
+          <h2>Play with a friend</h2>
+          <p>Make a room and send them your invite link.</p>
+        </div>
+      </div>
+      <button class="button button-dark" id="createGame">Create online game</button>
+      <div class="invite-row">
+        <button class="button button-soft" id="copyLink" disabled>Copy invite link</button>
+      </div>
+      <p id="onlineStatus" class="online-status" aria-live="polite">Online play needs your Supabase setup.</p>
+    </section>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>
